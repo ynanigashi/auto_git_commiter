@@ -1,4 +1,4 @@
-import os
+import os, sys
 import configparser
 import subprocess
 import datetime
@@ -19,7 +19,7 @@ def main():
     modified_files = get_modified_today_file(result_stdout)
     added_files = get_added_file_with_today_str(result_stdout)
     if len(modified_files) == 0 and len(added_files) == 0:
-        return 0
+        sys.exit(-1)
 
     # git addコマンドを実行
     commit_files = modified_files + added_files
